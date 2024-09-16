@@ -1,4 +1,4 @@
-iinitBattery()
+initBattery()
 
 function initBattery(){
     const batteryLiquid = document.querySelector(".Bliquid")
@@ -15,7 +15,7 @@ function initBattery(){
             } else if (level <= 20 &! batt.charging){
                 batteryStatus.innerHTML = `Low Charge <i class="ri-plug-line animated-red animated-red"></i>`
             } else if (batt.charging){
-                batteryStatus.innerHTML = `Charging... <i class"ri-flashlight-line animated-green"></i>`
+                batteryStatus.innerHTML = `Charging...<i class="ri-flashlight-fill"></i>`
             } else {
                 batteryStatus.innerHTML = ""
             }
@@ -34,5 +34,7 @@ function initBattery(){
             }
         }
         updateBattery()
+        batt.addEventListener("chargingchange", () => { updateBattery () })
+        batt.addEventListener("levelchange", () => { updateBattery })
     })
 }
